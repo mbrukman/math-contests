@@ -4,11 +4,19 @@ I am sharing my solutions to various math contest problems, in case it may be
 useful to others who are also interested in solving these problems or
 practicing to participate in math competitions.
 
+For the benefit of educators and organizers of math contest practice sessions,
+I am including each problem in a separate file, to make it easy to
+mix-and-match combinations of problems for student practice sessions.
+
 **Disclaimer:** these are my personal solutions, and they have not been
 reviewed, so be careful relying on them as there might be errors. Some of these
 competitions may have canonical solutions from the publishers of the problems
 which you may wish to refer to instead if you're looking for verified
 solutions.
+
+## Contests
+
+* [Virginia Tech Regional Math Contest](vtrmc)
 
 ## Contributing
 

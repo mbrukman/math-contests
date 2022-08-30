@@ -1,0 +1,10 @@
+# LaTeX temporary & output files
+*.aux
+*.dvi
+*.log
+*.out
+*.pdf
+
+# Editor temporary files
+*~
+*.sw?

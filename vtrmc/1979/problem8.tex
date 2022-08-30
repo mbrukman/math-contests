@@ -1,0 +1,20 @@
+Let $S$ be a finite set of polynomials in two variables, $x$ and $y$. For $n$ a
+positive integer, define $W_n(S)$ to be the collection of all expressions
+$p_1 p_2 ... p_k$, where $p_i \in S$ and $1 \le k \le n$. Let $d_n(S)$ indicate
+the maximum number of linearly independent polynomials in $W_n(S)$. For example,
+$W_2(\lbrace x^2, y \rbrace) = \lbrace x^2, y, x^2 y, x^4, y^2 \rbrace$ and
+$d_2(\lbrace x^2, y \rbrace) = 5$.
+
+\begin{enumerate}[(a)]
+\item Find $d_2(\lbrace 1, x, x + 1, y \rbrace)$.
+
+\item Find a closed formula in $n$ for $d_n(\lbrace 1, x, y \rbrace)$.
+
+\item Calculate the least upper bound over all such sets of
+      $\displaystyle{ \limsup_{n \to \infty} \frac{\log d_n(S)}{\log n} }$.
+
+      $\displaystyle{
+          \limsup_{n \to \infty} a_n =
+          \lim_{n \to \infty}(\sup \lbrace a_n, a_{n + 1},... \rbrace)
+      }$, where $\sup$ means supremum or least upper bound.
+\end{enumerate}
