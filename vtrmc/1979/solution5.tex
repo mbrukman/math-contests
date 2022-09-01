@@ -1,0 +1,57 @@
+We can demonstrate this via induction. Recall that to prove something by
+induction, we have two steps:
+
+\begin{enumerate}
+\item prove the base case
+\item prove the inductive case, e.g., if something is true for $n$, it's also
+      true for $n+1$
+\end{enumerate}
+
+The above two steps let us claim that this is generally true for all $n$ of
+interest.
+
+Let's first consider the base case $(n = 1)$:
+
+$$
+  3^{4n + 2} + 5^{2n + 1} = 3^{4 + 2} + 5^{2 + 1} = 729 + 125 = 854 = 14 \cdot 67
+$$
+
+Thus, $14$ divides that expression, so we have shown the base case.
+
+Now let's consider the inductive case:
+
+\begin{enumerate}
+\item assume that $14$ divides $3^{4n + 2} + 5^{2n + 1}$
+\item prove that $14$ divides $3^{4(n+1) + 2} + 5^{2(n+1) + 1}$
+\end{enumerate}
+
+Note that we can assume that:
+
+$$
+  3^{4n + 2} + 5^{2n + 1} \mod 14 = 0 \qquad \text{(1)}
+$$
+
+Let's start with the second point:
+
+$$
+\begin{aligned}
+3^{4(n+1) + 2} + 5^{2(n+1) + 1}             & \mod 14 \stackrel{?}{=} 0 & \quad \text{starting point} \\
+3^{4n +4 + 2} + 5^{2n + 2 + 1}              & \mod 14 \stackrel{?}{=} 0 & \quad \text{expand} \\
+3^4 \cdot 3^{4n + 2} + 5^2 \cdot 5^{2n + 1} & \mod 14 \stackrel{?}{=} 0 & \quad
+                                              \text{factor to match starting point} \\
+81 \cdot 3^{4n + 2} + 25 \cdot 5^{2n + 1}   & \mod 14 \stackrel{?}{=} 0 & \quad \text{simplify} \\
+56 \cdot 3^{4n + 2} + 25 \cdot 3^{4n + 2} + 25 \cdot 5^{2n + 1}
+                                            & \mod 14 \stackrel{?}{=} 0 & \quad \text{separate $81$ into $25$ and remainder} \\
+56 \cdot 3^{4n + 2} + 25 \cdot (3^{4n + 2} + 5^{2n + 1})
+                                            & \mod 14 \stackrel{?}{=} 0 & \quad \text{factor out $25$} \\
+56 \cdot 3^{4n + 2}                         & \mod 14 \stackrel{?}{=} 0 & \quad \text{using eq. 1} \\
+0                                           & \mod 14 = 0 & \quad \text{since $56 \mod 14 = 0$} \\
+\end{aligned}
+$$
+
+Above, we were able to first subtract the expression $25 \cdot (3^{4n + 2} +
+5^{2n + 1})$ since it is divisible by $14$ and then similarly, $56 \cdot 3^{4n
++ 2}$ since it is also divisible by $14$.
+
+Since we have proven the inductive case, this completes the proof.
+$\qquad \blacksquare$
