@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Install LuaLaTeX
+      run: |
+        sudo apt install -qq -y \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-latex-recommended
+
+    - name: Build contest PDFs
+      run: |
+        cd vtrmc
+        for year in ????; do
+          (cd "${year}" && make)
+        done
