@@ -8,15 +8,59 @@ For the benefit of educators and organizers of math contest practice sessions,
 I am including each problem in a separate file, to make it easy to
 mix-and-match combinations of problems for student practice sessions.
 
-**Disclaimer:** these are my personal solutions, and they have not been
+_**Disclaimer:** these are my personal solutions, and they have not been
 reviewed, so be careful relying on them as there might be errors. Some of these
 competitions may have canonical solutions from the publishers of the problems
 which you may wish to refer to instead if you're looking for verified
-solutions.
+solutions._
 
 ## Contests
 
 * [Virginia Tech Regional Math Contest](vtrmc)
+
+## Compiling $\LaTeX$ to PDF
+
+First, install required packages for building with LuaLaTeX (tested on Ubuntu
+20.04):
+
+```sh
+sudo apt install \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-latex-recommended
+```
+
+> Note: if the set of packages is out-of-date, check the [workflow]
+> ([status][workflow-status]) to see what it's doing, as that is run on every
+> pull request, and I aim to keep it working.
+
+In any contest directory directory with `*.tex` files, you can run any of the
+following commands (though if I haven't published solutions yet, that specific
+command will fail):
+
+* Build both problem set and solutions:
+
+  ```
+  make
+  ```
+
+* Build just the problem set:
+
+  ```
+  make problems
+  ```
+
+* Build just the solutions:
+
+  ```
+  make solutions
+  ```
+
+* Clean up temporary outputs:
+
+  ```
+  make clean
+  ```
 
 ## Contributing
 
@@ -31,3 +75,6 @@ The contest authors retain copyright of their problem sets.
 My original solutions are provided under the Creative Commons Attribution 4.0
 International license (CC-BY-4.0); see [`LICENSE.txt`](LICENSE.txt) for
 details.
+
+[workflow]: .github/workflows/build.yml
+[workflow-status]: https://github.com/mbrukman/math-contests/actions/workflows/build.yml?query=branch%3Amain
