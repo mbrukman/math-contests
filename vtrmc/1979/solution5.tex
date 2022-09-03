@@ -28,24 +28,31 @@ Now let's consider the inductive case:
 Note that we can assume that:
 
 $$
-  3^{4n + 2} + 5^{2n + 1} \mod 14 = 0 \qquad \text{(1)}
+  3^{4n + 2} + 5^{2n + 1} \equiv 0 \mod 14 \qquad \text{(1)}
 $$
 
 Let's start with the second point:
 
 $$
 \begin{aligned}
-3^{4(n+1) + 2} + 5^{2(n+1) + 1}             & \mod 14 \stackrel{?}{=} 0 & \quad \text{starting point} \\
-3^{4n +4 + 2} + 5^{2n + 2 + 1}              & \mod 14 \stackrel{?}{=} 0 & \quad \text{expand} \\
-3^4 \cdot 3^{4n + 2} + 5^2 \cdot 5^{2n + 1} & \mod 14 \stackrel{?}{=} 0 & \quad
-                                              \text{factor to match starting point} \\
-81 \cdot 3^{4n + 2} + 25 \cdot 5^{2n + 1}   & \mod 14 \stackrel{?}{=} 0 & \quad \text{simplify} \\
+3^{4(n+1) + 2} + 5^{2(n+1) + 1}             & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{starting point} \\
+3^{4n +4 + 2} + 5^{2n + 2 + 1}              & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{expand} \\
+3^4 \cdot 3^{4n + 2} + 5^2 \cdot 5^{2n + 1} & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{factor to match starting point} \\
+81 \cdot 3^{4n + 2} + 25 \cdot 5^{2n + 1}   & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{simplify} \\
 56 \cdot 3^{4n + 2} + 25 \cdot 3^{4n + 2} + 25 \cdot 5^{2n + 1}
-                                            & \mod 14 \stackrel{?}{=} 0 & \quad \text{separate $81$ into $25$ and remainder} \\
+                                            & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{separate $81$ into $25$ and remainder} \\
 56 \cdot 3^{4n + 2} + 25 \cdot (3^{4n + 2} + 5^{2n + 1})
-                                            & \mod 14 \stackrel{?}{=} 0 & \quad \text{factor out $25$} \\
-56 \cdot 3^{4n + 2}                         & \mod 14 \stackrel{?}{=} 0 & \quad \text{using eq. 1} \\
-0                                           & \mod 14 = 0 & \quad \text{since $56 \mod 14 = 0$} \\
+                                            & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{factor out $25$} \\
+56 \cdot 3^{4n + 2}                         & \stackrel{?}{\equiv} 0 \mod 14
+                                            & \quad \text{using eq. 1} \\
+0                                           & \equiv 0 \mod 14
+                                            & \quad \text{since $56 \equiv 0 \mod 14$} \\
 \end{aligned}
 $$
 
