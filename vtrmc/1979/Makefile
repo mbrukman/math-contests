@@ -16,7 +16,7 @@ SOLUTIONS_TEX := $(wildcard solution?.tex)
 
 solutions: solutions.pdf
 
-solutions.pdf: solutions.tex $(SOLUTIONS_TEX) Makefile
+solutions.pdf: solutions.tex $(PROBLEMS_TEX) $(SOLUTIONS_TEX) Makefile
 	$(VERB) lualatex --shell-escape $<
 
 clean:
