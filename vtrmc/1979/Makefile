@@ -12,7 +12,7 @@ problems: problems.pdf
 problems.pdf: problems.tex $(PROBLEMS_TEX) Makefile
 	$(VERB) lualatex --shell-escape $<
 
-SOLUTIONS_TEX := $(wildcard solution?.tex)
+SOLUTIONS_TEX := $(wildcard solution?.tex) ../solutions-disclaimer.tex
 
 solutions: solutions.pdf
 
