@@ -5,14 +5,16 @@ endif
 
 all: problems solutions
 
-PROBLEMS_TEX := $(wildcard ../../third_party/vtrmc/1980/problem?.tex)
+COMMON_TEX = ../common.tex
+
+PROBLEMS_TEX := $(wildcard ../../third_party/vtrmc/1980/problem?.tex) $(COMMON_TEX)
 
 problems: problems.pdf
 
 problems.pdf: problems.tex $(PROBLEMS_TEX) Makefile
 	$(VERB) lualatex --shell-escape $<
 
-SOLUTIONS_TEX := $(wildcard solution?.tex) ../solutions-disclaimer.tex
+SOLUTIONS_TEX := $(wildcard solution?.tex) $(COMMON_TEX) $(COMMON_TEX) ../solutions-disclaimer.tex
 
 solutions: solutions.pdf
 
