@@ -25,6 +25,18 @@ jobs:
     - name: Build contest PDFs
       run: |
         cd vtrmc
-        for year in ????; do
-          (cd "${year}" && make)
+        for year in [1-9]* ; do
+          # The begin/end markers enable having collapsible sections in the
+          # output, which improves readability.
+          #
+          # See the docs for details:
+          # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines
+
+          echo "::group::VTRMC ${year} problems"
+          make -C "${year}" problems
+          echo "::endgroup::"
+
+          echo "::group::VTRMC ${year} solutions"
+          make -C "${year}" solutions
+          echo "::endgroup::"
         done
