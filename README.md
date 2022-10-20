@@ -8,11 +8,10 @@ For the benefit of educators and organizers of math contest practice sessions,
 I am including each problem in a separate file, to make it easy to
 mix-and-match combinations of problems for student practice sessions.
 
-_**Disclaimer:** these are my personal solutions, and they have not been
-reviewed, so be careful relying on them as there might be errors. Some of these
-competitions may have canonical solutions from the publishers of the problems
-which you may wish to refer to instead if you're looking for verified
-solutions._
+_**Disclaimer:** these are my personal solutions; they have not been reviewed,
+so be careful relying on them as there might be errors. Some of these
+competitions have official solutions from the publishers which you may wish to
+refer to instead if you're looking for verified solutions._
 
 ## Contests
 
