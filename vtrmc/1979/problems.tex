@@ -9,6 +9,9 @@
 \newcommand{\source}{\href{\vtrmc}{\texttt{\vtrmc}}}
 \newcommand{\problem}[1]{\textbf{Problem #1.}}
 
+% Syntax: \input_problem{year}{problem number}
+\newcommand{\inputproblem}[2]{\input{../../third_party/vtrmc/#1/problem#2.tex}}
+
 \begin{document}
 
 \title{Virginia Tech Regional Math Contest 1979\footnote{Source: \source}}
@@ -17,27 +20,27 @@
 \maketitle
 
 \problem{1}
-\input{problem1.tex}
+\inputproblem{1979}{1}
 
 \problem{2}
-\input{problem2.tex}
+\inputproblem{1979}{2}
 
 \problem{3}
-\input{problem3.tex}
+\inputproblem{1979}{3}
 
 \problem{4}
-\input{problem4.tex}
+\inputproblem{1979}{4}
 
 \problem{5}
-\input{problem5.tex}
+\inputproblem{1979}{5}
 
 \problem{6}
-\input{problem6.tex}
+\inputproblem{1979}{6}
 
 \problem{7}
-\input{problem7.tex}
+\inputproblem{1979}{7}
 
 \problem{8}
-\input{problem8.tex}
+\inputproblem{1979}{8}
 
 \end{document}
