@@ -5,7 +5,7 @@ endif
 
 all: problems solutions
 
-PROBLEMS_TEX := $(wildcard problem?.tex)
+PROBLEMS_TEX := $(wildcard ../../third_party/vtrmc/1980/problem?.tex)
 
 problems: problems.pdf
 
