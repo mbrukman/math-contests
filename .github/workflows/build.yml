@@ -24,7 +24,7 @@ jobs:
 
     - name: Build contest PDFs
       run: |
-        cd vtrmc
+        cd vtrmc/tex
         for year in [1-9]* ; do
           # The begin/end markers enable having collapsible sections in the
           # output, which improves readability.

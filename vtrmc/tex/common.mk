@@ -5,7 +5,7 @@ endif
 
 all: problems solutions
 
-COMMON_TEX = $(ROOT)/vtrmc/common.tex
+COMMON_TEX = $(ROOT)/vtrmc/tex/common.tex
 
 PROBLEMS_TEX := $(wildcard $(ROOT)/third_party/vtrmc/$(YEAR)/problem?.tex) $(COMMON_TEX)
 
@@ -14,7 +14,7 @@ problems: problems.pdf
 problems.pdf: problems.tex $(PROBLEMS_TEX) Makefile
 	$(VERB) lualatex --shell-escape $<
 
-SOLUTIONS_TEX := $(wildcard solution?.tex) $(COMMON_TEX) $(COMMON_TEX) $(ROOT)/vtrmc/solutions-disclaimer.tex
+SOLUTIONS_TEX := $(wildcard solution?.tex) $(COMMON_TEX) $(COMMON_TEX) $(ROOT)/vtrmc/tex/solutions-disclaimer.tex
 
 solutions: solutions.pdf
 
