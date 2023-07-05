@@ -22,7 +22,7 @@ jobs:
             texlive-latex-extra \
             texlive-latex-recommended
 
-    - name: Build contest PDFs
+    - name: Build *.tex files to PDFs
       run: |
         cd vtrmc/tex
         for year in [1-9]* ; do
@@ -40,3 +40,30 @@ jobs:
           make -C "${year}" solutions
           echo "::endgroup::"
         done
+      env:
+        VERBOSE: 1
+
+    - name: Install Typst
+      run: |
+        # Download Typst, decompress it, and add its directory to $PATH.
+        curl -sOL "https://github.com/typst/typst/releases/download/${TYPST_VERSION}/${TYPST_BUILD}.tar.xz"
+        tar xf "${TYPST_BUILD}.tar.xz"
+        echo "${PWD}/${TYPST_BUILD}" >> "${GITHUB_PATH}"
+      env:
+        TYPST_VERSION: v0.6.0
+        TYPST_BUILD: typst-x86_64-unknown-linux-musl
+
+    - name: Build *.typ files to PDFs
+      run: |
+        cd vtrmc/typ
+        for year in [1-9]* ; do
+          echo "::group::VTRMC ${year} problems"
+          make -C "${year}" problems
+          echo "::endgroup::"
+
+          echo "::group::VTRMC ${year} solutions"
+          make -C "${year}" solutions
+          echo "::endgroup::"
+        done
+      env:
+        VERBOSE: 1
