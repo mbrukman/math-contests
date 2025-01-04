@@ -1,5 +1,13 @@
 # Math contests & solutions
 
+[![LaTeX][latex-ci-badge]][latex-ci-url]
+[![Typst][typst-ci-badge]][typst-ci-url]
+
+[latex-ci-badge]: https://github.com/mbrukman/math-contests/actions/workflows/latex.yaml/badge.svg?query=branch%3Amain
+[latex-ci-url]: https://github.com/mbrukman/math-contests/actions/workflows/latex.yaml?query=branch%3Amain
+[typst-ci-badge]: https://github.com/mbrukman/math-contests/actions/workflows/typst.yaml/badge.svg?query=branch%3Amain
+[typst-ci-url]: https://github.com/mbrukman/math-contests/actions/workflows/typst.yaml?query=branch%3Amain
+
 I am sharing my solutions to various math contest problems, in case it may be
 useful to others who are also interested in solving these problems or
 practicing to participate in math competitions.
