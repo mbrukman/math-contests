@@ -28,7 +28,7 @@ refer to instead if you're looking for verified solutions._
 ## Compiling $\LaTeX$ to PDF
 
 First, install required packages for building with LuaLaTeX (tested on Ubuntu
-20.04):
+24.04):
 
 ```sh
 sudo apt install \
@@ -37,7 +37,8 @@ sudo apt install \
     texlive-latex-recommended
 ```
 
-> Note: if the set of packages is out-of-date, check the [workflow]
+> [!NOTE]
+> If the set of packages is out-of-date, check the [workflow]
 > ([status][workflow-status]) to see what it's doing, as that is run on every
 > pull request, and I aim to keep it working.
 
@@ -83,5 +84,5 @@ My original solutions are provided under the Creative Commons Attribution 4.0
 International license (CC-BY-4.0); see [`LICENSE.txt`](LICENSE.txt) for
 details.
 
-[workflow]: .github/workflows/build.yml
-[workflow-status]: https://github.com/mbrukman/math-contests/actions/workflows/build.yml?query=branch%3Amain
+[workflow]: .github/workflows/latex.yaml
+[workflow-status]: https://github.com/mbrukman/math-contests/actions/workflows/latex.yaml?query=branch%3Amain
