@@ -116,7 +116,7 @@ Since $2^(1 + R) = 2^2$, we know that $R = 1$. Hence, here are all the unknown
 values:
 
 $
-  #boxed([R = 1; quad S = 0; quad T = -1; quad U = -2]) quad qed
+  #boxed([R = 1; S = 0; T = -1; U = -2]) quad qed
 $
 
 *Verification*
