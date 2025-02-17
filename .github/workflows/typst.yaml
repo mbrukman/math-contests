@@ -12,6 +12,7 @@ on:
       - '**/typ/**'
         # Relevant CI configs
       - '.github/workflows/typst.yaml' # this file
+
   pull_request:
     branches: [ "main" ]
     paths:
