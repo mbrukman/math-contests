@@ -25,26 +25,27 @@ refer to instead if you're looking for verified solutions._
 
 * [Virginia Tech Regional Math Contest](vtrmc)
 
-## Compiling $\LaTeX$ to PDF
+## Install LuaLaTeX
 
-First, install required packages for building with LuaLaTeX (tested on Ubuntu
-24.04):
+Install required packages for building with LuaLaTeX; see our [LaTeX
+workflow][latex-workflow] ([status][latex-workflow-status]) to see how we
+install it.
 
-```sh
-sudo apt install \
-    texlive-latex-base \
-    texlive-latex-extra \
-    texlive-latex-recommended
-```
+## Install Typst
+
+[Install Typst][install-typst] as appropriate for your platform. For
+reference, you can see how we install it in the [Typst workflow][typst-workflow].
 
 > [!NOTE]
-> If the set of packages is out-of-date, check the [workflow]
-> ([status][workflow-status]) to see what it's doing, as that is run on every
-> pull request, and I aim to keep it working.
+> The files in this repository are currently compatible with the Typst version
+> listed in the [Typst workflow][typst-workflow]. Assuming our [build is
+> green][typst-workflow-status], if you have trouble building the files, please
+> make sure you're using the same version as we are.
 
-In any contest directory directory with `*.tex` files, you can run any of the
-following commands (though if I haven't published solutions yet, that specific
-command will fail):
+## Building PDFs
+
+In any contest directory (outside of `third_party`) with `*.tex` or `*.typ`
+files, you can run any of the following commands:
 
 * Build both problem set and solutions:
 
@@ -84,5 +85,8 @@ My original solutions are provided under the Creative Commons Attribution 4.0
 International license (CC-BY-4.0); see [`LICENSE.txt`](LICENSE.txt) for
 details.
 
-[workflow]: .github/workflows/latex.yaml
-[workflow-status]: https://github.com/mbrukman/math-contests/actions/workflows/latex.yaml?query=branch%3Amain
+[install-typst]: https://github.com/typst/typst?tab=readme-ov-file#installation
+[latex-workflow]: .github/workflows/latex.yaml
+[latex-workflow-status]: https://github.com/mbrukman/math-contests/actions/workflows/latex.yaml?query=branch%3Amain
+[typst-workflow]: .github/workflows/typst.yaml
+[typst-workflow-status]: https://github.com/mbrukman/math-contests/actions/workflows/typst.yaml?query=branch%3Amain

@@ -1,5 +1,5 @@
-// Define "maybe congruent" with a question mark above the `ident`.
-#let mbeq = $limits(ident)^?$
+// Define "maybe congruent" with a question mark above the `equiv`.
+#let mbeq = $limits(equiv)^?$
 
 We can demonstrate this via induction. Recall that to prove something by
 induction, we have two steps:
@@ -26,7 +26,7 @@ Now let's consider the inductive case:
 Note that we can assume that:
 
 $
-  3^(4n + 2) + 5^(2n + 1) ident 0 mod 14 "(1)"
+  3^(4n + 2) + 5^(2n + 1) equiv 0 mod 14 "(1)"
 $
 
 Let's start with the second point:
@@ -48,8 +48,8 @@ $
                                         & "factor out" 25 \
 56 dot 3^(4n + 2)                       & mbeq 0 mod 14
                                         & "using eq." 1 \
-0                                       & ident 0 mod 14
-                                        & "since" 56 ident 0 mod 14 \
+0                                       & equiv 0 mod 14
+                                        & "since" 56 equiv 0 mod 14 \
 $
 
 Above, we were able to first subtract the expression $25 dot (3^(4n + 2) +
