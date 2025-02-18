@@ -15,12 +15,12 @@ problems: problems.pdf
 PROBLEMS = $(ROOT)/third_party/vtrmc/typ/$(YEAR)/problem?.typ
 
 problems.pdf: problems.typ problem?.typ $(PROBLEMS) $(TYPST_DEPS) $(MAKEFILE_DEPS)
-	$(VERB) $(TYPST) --root="$(ROOT)" compile $< $@
+	$(VERB) $(TYPST) compile --root="$(ROOT)" $< $@
 
 solutions: solutions.pdf
 
 solutions.pdf: solutions.typ solution?.typ $(PROBLEMS) $(TYPST_DEPS) $(MAKEFILE_DEPS)
-	$(VERB) $(TYPST) --root="$(ROOT)" compile $< $@
+	$(VERB) $(TYPST) compile --root="$(ROOT)" $< $@
 
 clean:
 	$(VERB) rm -f problems.pdf solutions.pdf
