@@ -3,22 +3,24 @@ ifeq ($(VERBOSE),1)
 	VERB =
 endif
 
+.PHONY: all problems solutions clean
+
 all: problems solutions
 
 COMMON_TEX = $(ROOT)/vtrmc/tex/common.tex
-
 PROBLEMS_TEX := $(wildcard $(ROOT)/third_party/vtrmc/$(YEAR)/problem?.tex) $(COMMON_TEX)
+MAKEFILE_DEPS = Makefile ../common.mk
 
 problems: problems.pdf
 
-problems.pdf: problems.tex $(PROBLEMS_TEX) Makefile
+problems.pdf: problems.tex $(PROBLEMS_TEX) $(MAKEFILE_DEPS)
 	$(VERB) lualatex --shell-escape $<
 
 SOLUTIONS_TEX := $(wildcard solution?.tex) $(COMMON_TEX) $(COMMON_TEX) $(ROOT)/vtrmc/tex/solutions-disclaimer.tex
 
 solutions: solutions.pdf
 
-solutions.pdf: solutions.tex $(PROBLEMS_TEX) $(SOLUTIONS_TEX) Makefile
+solutions.pdf: solutions.tex $(PROBLEMS_TEX) $(SOLUTIONS_TEX) $(MAKEFILE_DEPS)
 	$(VERB) lualatex --shell-escape $<
 
 clean:
