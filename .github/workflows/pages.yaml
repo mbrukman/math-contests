@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_run:
+    branches:
+      - main
     workflows: ["LaTeX", "Typst"]
     types:
       - completed
@@ -42,7 +44,8 @@ jobs:
           cp .github/scripts/generate_index.py deploy/
           cd deploy
           python3 generate_index.py
-          rm generate_index.py
+          pandoc -f markdown -t html -s index.md -o index.html
+          rm generate_index.py index.md
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
