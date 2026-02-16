@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["LaTeX", "Typst"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Aggregate artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p deploy/vtrmc/tex
+          mkdir -p deploy/vtrmc/typ
+          # Download latest artifacts from both workflows.
+          # We use || true to avoid failing if one hasn't been produced yet.
+          gh run download --name latex-artifacts --dir deploy/vtrmc/tex || echo "LaTeX artifacts not found"
+          gh run download --name typst-artifacts --dir deploy/vtrmc/typ || echo "Typst artifacts not found"
+
+      - name: Generate index.md
+        run: |
+          cp .github/scripts/generate_index.py deploy/
+          cd deploy
+          python3 generate_index.py
+          rm generate_index.py
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: deploy
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

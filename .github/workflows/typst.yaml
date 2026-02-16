@@ -66,3 +66,9 @@ jobs:
         done
       env:
         VERBOSE: 1
+
+    - name: Upload Typst artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: typst-artifacts
+        path: vtrmc/typ/**/*.pdf
