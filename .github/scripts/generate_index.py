@@ -21,17 +21,15 @@ def generate_index():
                 elif len(parts) >= 4 and parts[0] == '.' and parts[1] == 'vtrmc' and (parts[2] == 'tex' or parts[2] == 'typ'):
                     years.add(parts[3])
 
-    sorted_years = sorted(list(years), reverse=True)
-
     md = """# Virginia Tech Regional Math Contest
 
-This page lists the available problems and solutions for the VTRMC, rendered in both LaTeX and Typst.
+Available problems and solutions for the VTRMC, rendered via both LaTeX and Typst.
 
 | Year | LaTeX Problems | LaTeX Solutions | Typst Problems | Typst Solutions |
 |------|----------------|-----------------|----------------|-----------------|
 """
 
-    for year in sorted_years:
+    for year in sorted(years):
         line = f"| {year} | "
 
         # LaTeX
