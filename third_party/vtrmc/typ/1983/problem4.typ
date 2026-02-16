@@ -1,0 +1,5 @@
+A finite set of roads connect $n$ towns $T_1, T_2, ..., T_n$ where $n >= 2$.
+We say that towns $T_i$ and $T_j$ ($i != j$) are directly connected if there
+is a road segment connecting $T_i$ and $T_j$ which does not pass through any
+other town. Let $f(T_k)$ be the number of other towns directly connected to
+$T_k$. Prove that $f$ is not one-to-one.
