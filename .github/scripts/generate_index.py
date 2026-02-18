@@ -6,7 +6,7 @@ for the VTRMC, rendered in both LaTeX and Typst."""
 import os
 
 
-def generate_index():
+def generate_index() -> None:
     """Generates an index.md file, linking to all available PDFs."""
     years = set()
     for root, dirs, files in os.walk('.'):
