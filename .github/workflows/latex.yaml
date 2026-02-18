@@ -5,7 +5,8 @@ name: LaTeX
 # so we need to duplicate paths below and manually keep them in sync.
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
     paths:
         # All LaTeX files and associated Makefiles, etc.
       - '**/*.tex'
@@ -14,7 +15,8 @@ on:
       - '.github/workflows/latex.yaml' # this file
 
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
     paths:
         # All LaTeX files and associated Makefiles, etc.
       - '**/*.tex'
