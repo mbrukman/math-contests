@@ -4,7 +4,9 @@ on:
   workflow_run:
     branches:
       - main
-    workflows: ["LaTeX", "Typst"]
+    workflows:
+      - LaTeX
+      - Typst
     types:
       - completed
 
@@ -13,7 +15,7 @@ on:
 
   push:
     branches:
-      main
+      - main
     paths:
         # Files used in this workflow
       - '.github/scripts/generate_index.py'
@@ -50,6 +52,10 @@ jobs:
           # We use || true to avoid failing if one hasn't been produced yet.
           gh run download --name latex-artifacts --dir deploy/vtrmc/tex || echo "LaTeX artifacts not found"
           gh run download --name typst-artifacts --dir deploy/vtrmc/typ || echo "Typst artifacts not found"
+
+      - name: Install Pandoc
+        run: |
+          sudo apt install -qq -y pandoc
 
       - name: Generate index.md
         run: |
