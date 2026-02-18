@@ -8,6 +8,15 @@ on:
     types:
       - completed
 
+  push:
+    branches:
+      main
+    paths:
+        # Files used in this workflow
+      - '.github/scripts/generate_index.py'
+        # Relevant CI configs
+      - '.github/workflows/pages.yaml' # this file
+
 jobs:
   deploy:
     permissions:
