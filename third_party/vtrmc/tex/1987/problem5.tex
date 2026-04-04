@@ -1,0 +1,11 @@
+A sequence of integers $\lbrace n_1, n_2, ... \rbrace$ is defined as follows:
+$n_1$ is assigned arbitrarily and, for $k>1$, $$n_k=\sum_{j=1}^{j=k-1}z(n_j),$$
+where $z(n)$ is the number of $0$s in the binary representation of $n$ (each
+representation should have a leading digit of $1$ except for zero which has the
+representation $0$). An example, with $n_1=9$, is $\lbrace 9, 2, 3, 3, 3, ...
+\rbrace$, or in binary, $\lbrace 1001, 10, 11, 11, 11, ... \rbrace$.
+
+\begin{enumerate}[(a)]
+\item Find $n_1$ so that $\lim_{k \to \infty} n_k = 31$, and calculate $n_2, n_3, ... ,n_{10}$.
+\item Prove that, for every choice of $n_1$, the sequence $\lbrace n_k \rbrace$ converges.
+\end{enumerate}

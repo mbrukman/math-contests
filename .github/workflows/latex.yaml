@@ -36,6 +36,7 @@ jobs:
     - name: Install LuaLaTeX
       run: |
         sudo apt install -qq -y \
+            texlive-font-utils \
             texlive-latex-base \
             texlive-latex-extra \
             texlive-latex-recommended
