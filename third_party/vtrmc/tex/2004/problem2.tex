@@ -1,0 +1,13 @@
+A sequence of integers $\lbrace f(n) \rbrace$ for $n = 0, 1, 2, \dots$ is
+defined as follows: $f(0) = 0$ and for $n > 0$,
+
+$$
+f(n) = \begin{cases}
+         f(n - 1) + 3, & \text{if } n \equiv 0 \text{ or } 1 \pmod{6}, \\
+         f(n - 1) + 1, & \text{if } n \equiv 2 \text{ or } 5 \pmod{6}, \\
+         f(n - 1) + 2, & \text{if } n \equiv 3 \text{ or } 4 \pmod{6}.
+       \end{cases}
+$$
+
+Derive an explicit formula for $f(n)$ when $n \equiv 0 \pmod{6}$, showing all
+necessary details in your derivation.
