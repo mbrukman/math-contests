@@ -54,15 +54,17 @@ jobs:
 
           echo "::group::VTRMC ${year} problems"
           make -C "${year}" problems || {
-            echo "::error::VTRMC ${year} problems failed"
             EXIT_CODE=$?
+            echo "::error::VTRMC ${year} problems failed"
+            echo "VTRMC ${year} problems failed" >> "${GITHUB_STEP_SUMMARY}"
           }
           echo "::endgroup::"
 
           echo "::group::VTRMC ${year} solutions"
           make -C "${year}" solutions || {
-            echo "::error::VTRMC ${year} solutions failed"
             EXIT_CODE=$?
+            echo "::error::VTRMC ${year} solutions failed"
+            echo "VTRMC ${year} solutions failed" >> "${GITHUB_STEP_SUMMARY}"
           }
           echo "::endgroup::"
         done
