@@ -44,6 +44,7 @@ jobs:
     - name: Build *.tex files to PDFs
       run: |
         cd vtrmc/tex
+        EXIT_CODE=0
         for year in [1-9]* ; do
           # The begin/end markers enable having collapsible sections in the
           # output, which improves readability.
@@ -52,13 +53,20 @@ jobs:
           # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines
 
           echo "::group::VTRMC ${year} problems"
-          make -C "${year}" problems
+          make -C "${year}" problems || {
+            echo "::error::VTRMC ${year} problems failed"
+            EXIT_CODE=$?
+          }
           echo "::endgroup::"
 
           echo "::group::VTRMC ${year} solutions"
-          make -C "${year}" solutions
+          make -C "${year}" solutions || {
+            echo "::error::VTRMC ${year} solutions failed"
+            EXIT_CODE=$?
+          }
           echo "::endgroup::"
         done
+        exit $EXIT_CODE
       env:
         VERBOSE: 1
 
