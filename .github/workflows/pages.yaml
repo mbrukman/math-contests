@@ -57,12 +57,13 @@ jobs:
         run: |
           sudo apt install -qq -y pandoc
 
-      - name: Generate index.md
+      - name: Generate index page
         run: |
           cp .github/scripts/generate_index.py deploy/
           cd deploy
           python3 generate_index.py
-          pandoc -f markdown -t html -s index.md -o index.html
+          pandoc -f markdown -t html -s index.md -o index.html \
+              --metadata title="Virginia Tech Regional Math Contest (VTRMC) problems and solutions"
           rm generate_index.py index.md
 
       - name: Upload artifact
