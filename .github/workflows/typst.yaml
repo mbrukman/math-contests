@@ -31,7 +31,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
 
     - name: Install Typst
       run: |
@@ -59,11 +59,19 @@ jobs:
           # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines
 
           echo "::group::VTRMC ${year} problems"
-          make -C "${year}" problems
+          make -C "${year}" problems || {
+            EXIT_CODE=$?
+            echo "::error::VTRMC ${year} problems failed"
+            echo "VTRMC ${year} problems failed" >> "${GITHUB_STEP_SUMMARY}"
+          }
           echo "::endgroup::"
 
           echo "::group::VTRMC ${year} solutions"
-          make -C "${year}" solutions
+          make -C "${year}" solutions || {
+            EXIT_CODE=$?
+            echo "::error::VTRMC ${year} solutions failed"
+            echo "VTRMC ${year} solutions failed" >> "${GITHUB_STEP_SUMMARY}"
+          }
           echo "::endgroup::"
         done
       env:
