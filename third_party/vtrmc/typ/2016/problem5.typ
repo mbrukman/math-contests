@@ -1,0 +1,5 @@
+Suppose that $m, n, r$ are positive integers such that
+
+$ 1 + m + n sqrt(3) = (2 + sqrt(3))^(2r-1) $
+
+Prove that $m$ is a perfect square.
