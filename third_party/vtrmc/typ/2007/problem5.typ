@@ -1,0 +1,6 @@
+Find the third digit after the decimal point of
+
+$ (2 + sqrt(5))^(100) ((1 + sqrt(2))^(100) + (1 + sqrt(2))^(-100)). $
+
+For example, the third digit after the decimal point of $pi = 3.14159 ...$
+is $1$.

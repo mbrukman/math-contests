@@ -1,0 +1,7 @@
+#set enum(numbering: "(a)")
+
+
++ Prove that $f_0(x) = 1 + x + x^2 + x^3 + x^4$ has no real zero.
++ Prove that, for every integer $n >= 0$, $f_n(x) = 1+2^(-n) x+3^(-n) x^2
+ +4^(-n) x^3 + 5^(-n) x^4$ has no real zero. (Hint: consider $(d/dif x)(x
+ f_n(x))$.)
