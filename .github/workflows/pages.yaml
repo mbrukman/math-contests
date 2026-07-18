@@ -28,13 +28,14 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      actions: read
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
@@ -46,12 +47,26 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Get the last successful run ID for LaTeX
+          LATEX_RUN_ID=$(gh run list --workflow latex.yaml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          # Get the last successful run ID for Typst
+          TYPST_RUN_ID=$(gh run list --workflow typst.yaml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+
           mkdir -p deploy/vtrmc/tex
           mkdir -p deploy/vtrmc/typ
-          # Download latest artifacts from both workflows.
-          # We use || true to avoid failing if one hasn't been produced yet.
-          gh run download --name latex-artifacts --dir deploy/vtrmc/tex || echo "LaTeX artifacts not found"
-          gh run download --name typst-artifacts --dir deploy/vtrmc/typ || echo "Typst artifacts not found"
+
+          # Download artifacts from the latest successful runs.
+          if [ -n "$LATEX_RUN_ID" ]; then
+            gh run download "$LATEX_RUN_ID" --name latex-artifacts --dir deploy/vtrmc/tex
+          else
+            echo "LaTeX artifacts not found"
+          fi
+
+          if [ -n "$TYPST_RUN_ID" ]; then
+            gh run download "$TYPST_RUN_ID" --name typst-artifacts --dir deploy/vtrmc/typ
+          else
+            echo "Typst artifacts not found"
+          fi
 
       - name: Install Pandoc
         run: |
