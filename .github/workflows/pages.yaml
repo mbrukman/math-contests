@@ -47,23 +47,22 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get the last successful run ID for LaTeX
+          # Download artifacts from the latest successful LaTeX run.
           LATEX_RUN_ID=$(gh run list --workflow latex.yaml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
-          # Get the last successful run ID for Typst
-          TYPST_RUN_ID=$(gh run list --workflow typst.yaml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
-
-          mkdir -p deploy/vtrmc/tex
-          mkdir -p deploy/vtrmc/typ
-
-          # Download artifacts from the latest successful runs.
-          if [ -n "$LATEX_RUN_ID" ]; then
-            gh run download "$LATEX_RUN_ID" --name latex-artifacts --dir deploy/vtrmc/tex
+          echo "LaTeX workflow run ID: ${LATEX_RUN_ID}"
+          if [ -n "${LATEX_RUN_ID}" ]; then
+            mkdir -p "deploy/vtrmc/tex"
+            gh run download "${LATEX_RUN_ID}" --name "latex-artifacts" --dir "deploy/vtrmc/tex" || echo "LaTeX artifacts download failed"
           else
             echo "LaTeX artifacts not found"
           fi
 
-          if [ -n "$TYPST_RUN_ID" ]; then
-            gh run download "$TYPST_RUN_ID" --name typst-artifacts --dir deploy/vtrmc/typ
+          # Download artifacts from the latest successful Typst run.
+          TYPST_RUN_ID=$(gh run list --workflow typst.yaml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          echo "Typst workflow run ID: ${TYPST_RUN_ID}"
+          if [ -n "${TYPST_RUN_ID}" ]; then
+            mkdir -p "deploy/vtrmc/typ"
+            gh run download "${TYPST_RUN_ID}" --name "typst-artifacts" --dir "deploy/vtrmc/typ" || echo "Typst artifacts download failed"
           else
             echo "Typst artifacts not found"
           fi
