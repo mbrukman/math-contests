@@ -72,6 +72,17 @@ jobs:
       env:
         VERBOSE: 1
 
+    - name: Delete empty solutions
+      run: |
+        cd vtrmc/tex
+        for year in [1-9]* ; do
+          # Remove solutions.pdf for years that do not have solutions.
+          if ! ls "${year}/solution[0-9].tex" >/dev/null 2>&1 ; then
+            echo "Deleting ${year}/solutions.pdf as it's empty"
+            rm "${year}/solutions.pdf"
+          fi
+        done
+
     - name: Upload LaTeX artifacts
       uses: actions/upload-artifact@v7
       with:
