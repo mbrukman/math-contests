@@ -73,12 +73,20 @@ jobs:
 
       - name: Generate index page
         run: |
-          cp .github/scripts/generate_index.py deploy/
           cd deploy
-          python3 generate_index.py
+
+          # Generate top-level index page.
+          pandoc -f markdown -t html -s .github/pages/index.md -o index.html \
+              --metadata title="Math contest problems and solutions"
+
+          # Generate VTRMC index page.
+          cd vtrmc
+          python3 ../../../.github/scripts/generate_index.py \
+              --contest-name "Virginia Tech Regional Math Contest" \
+              --contest-abbrev "VTRMC"
           pandoc -f markdown -t html -s index.md -o index.html \
               --metadata title="Virginia Tech Regional Math Contest (VTRMC) problems and solutions"
-          rm generate_index.py index.md
+          rm index.md
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
