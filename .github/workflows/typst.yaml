@@ -77,6 +77,17 @@ jobs:
       env:
         VERBOSE: 1
 
+    - name: Delete empty solutions
+      run: |
+        cd vtrmc/typ
+        for year in [1-9]* ; do
+          # Remove solutions.pdf for years that do not have solutions.
+          if ! ls "${year}/solution[0-9].typ" >/dev/null 2>&1 ; then
+            echo "Deleting ${year}/solutions.pdf as it's empty"
+            rm "${year}/solutions.pdf"
+          fi
+        done
+
     - name: Upload Typst artifacts
       uses: actions/upload-artifact@v7
       with:
