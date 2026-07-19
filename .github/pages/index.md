@@ -1,2 +1,2 @@
-* [Virginia Tech Regional Math Contest (VTRMC)](vtrmc/index.html)
+* [Virginia Tech Regional Math Contest (VTRMC)](vtrmc)
 
