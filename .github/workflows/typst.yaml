@@ -82,7 +82,7 @@ jobs:
         cd vtrmc/typ
         for year in [1-9]* ; do
           # Remove solutions.pdf for years that do not have solutions.
-          if ! ls "${year}/solution[0-9].typ" >/dev/null 2>&1 ; then
+          if ! ls "${year}"/solution[0-9].typ >/dev/null 2>&1 ; then
             echo "Deleting ${year}/solutions.pdf as it's empty"
             rm "${year}/solutions.pdf"
           fi
