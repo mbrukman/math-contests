@@ -22,9 +22,8 @@ def generate_index(contest_name: str, contest_abbrev: str) -> None:
                 elif len(parts) >= 3 and parts[0] == '.' and parts[1] in ['tex', 'typ']:
                     years.add(parts[2])
 
-    md = f"""# {contest_name}
-
-Available problems and solutions for the {contest_abbrev}, rendered via both LaTeX and Typst.
+    md = f"""\
+{contest_name} problems and solutions, rendered via LaTeX and Typst.
 
 | Year | LaTeX Problems | LaTeX Solutions | Typst Problems | Typst Solutions |
 |------|----------------|-----------------|----------------|-----------------|
