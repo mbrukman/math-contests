@@ -76,12 +76,12 @@ jobs:
           cd deploy
 
           # Generate top-level index page.
-          pandoc -f markdown -t html -s .github/pages/index.md -o index.html \
+          pandoc -f markdown -t html -s ../.github/pages/index.md -o index.html \
               --metadata title="Math contest problems and solutions"
 
           # Generate VTRMC index page.
           cd vtrmc
-          python3 ../../../.github/scripts/generate_index.py \
+          python3 ../../.github/scripts/generate_index.py \
               --contest-name "Virginia Tech Regional Math Contest" \
               --contest-abbrev "VTRMC"
           pandoc -f markdown -t html -s index.md -o index.html \
